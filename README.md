@@ -50,6 +50,25 @@ public class Main {
 }
 ```
 
+### Generating a ULID in Hibernate
+
+```java
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+public class ExampleEntity {
+
+    @Id
+    @GeneratedValue(generator = "ulid-generator")
+    @GenericGenerator(name = "ulid-generator", strategy = "com.walidzaaneun.hibrenate.ULIDGenerator")
+    private String id;
+    
+    ....
+}
+```
+
 ## Why ULID?
 
 - **Sortable**: ULIDs preserve order based on the timestamp.
